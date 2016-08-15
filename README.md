@@ -1,3 +1,14 @@
+# groupItPdo
+  groupIt делит результат вывода pdoResources на группы блоков.
+
+**Параметры**  
+* &groupN на какое число делить, по-умолчанию 3.
+* &tplWrapper шаблон для обертки, по-умолчанию @INLINE <div>[[+wrapper]]</div>.
+
+**Использование**  
+[[groupIt? &groupN=`3` &tplWrapper=`@INLINE <div>[[+wrapper]]</div>` ]]
+
+
 # groupIt
 Простенький сниппет для modx
 
