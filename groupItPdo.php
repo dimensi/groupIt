@@ -8,7 +8,7 @@
      *
      * DESCRIPTION
      *
-     * groupIt предназначен для обворачивания результатов pdoResources.
+     * groupIt делит результат вывода pdoResources на группы блоков.
      *
      * PROPERTIES:
      *
@@ -18,9 +18,11 @@
      * [[groupIt? &groupN=`3` &tplWrapper=`@INLINE <div>[[+wrapper]]</div>` ]]
      */
 
-    $tplWrapper                          = $modx->getOption('tplWrapper', $scriptProperties, '@INLINE <div>[[+wrapper]]</div>');
-    $groupN                              = $modx->getOption('groupN', $scriptProperties, 3);
-    $scriptProperties['outputSeparator'] = '||';
+    $tplWrapper = $modx->getOption('tplWrapper', $scriptProperties, '@INLINE <div>[[+wrapper]]</div>');
+    $groupN     = $modx->getOption('groupN', $scriptProperties, 3);
+    if (!isset($scriptProperties['outputSeparator'])) {
+        $scriptProperties['outputSeparator'] = '||';
+    }
 
     $rows     = $modx->runSnippet('pdoResources', $scriptProperties);
     $rows     = explode($scriptProperties['outputSeparator'], $rows);
